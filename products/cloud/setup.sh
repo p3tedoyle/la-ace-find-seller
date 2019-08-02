@@ -22,6 +22,7 @@ mkdir -p ../app/secrets
 # Create a new role for the app. 
 SERVICE_ACCOUNT_NAME=product-service
 SERVICE_ACCOUNT_DEST=../app/secrets/service_account.json
+SA_EMAIL=$(gcloud iam service-accounts list --filter='displayName:$SERVICE_ACCOUNT_NAME' --format='value(email)')
 
 gcloud iam service-accounts create \
     $SERVICE_ACCOUNT_NAME \
