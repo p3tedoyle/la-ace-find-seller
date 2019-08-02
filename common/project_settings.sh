@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The name of the project to deploy services into.
-PROJECT_NAME="ace-demo-2"
+PROJECT_NAME="p3tedoyle/la-ace-find-seller"
 
 # Which default region should regional services use?
 PROJECT_REGION="us-central1"
@@ -21,11 +21,11 @@ ORGANIZATION="find-seller"
 
 # This is the Storage bucket used for public assets. 
 # The entire bucket is public by default
-PUBLIC_ASSETS="fs2-public-bucket"
+PUBLIC_ASSETS="fs2-public-bucket-pdoylerackspace"
 
 # This is the Storage bucket used for private assets. 
 # The entire bucket is private by default
-PRIVATE_ASSETS="fs2-private-bucket"
+PRIVATE_ASSETS="fs2-private-bucket-pdoylerackspace"
 
 # The name of the Pubsub topic to create / use
 PUB_SUB_TOPIC="fs2-items"
