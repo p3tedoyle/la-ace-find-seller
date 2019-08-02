@@ -28,7 +28,7 @@ gcloud iam service-accounts create \
     --display-name $SERVICE_ACCOUNT_NAME
 
 SA_EMAIL=$(gcloud iam service-accounts list \
-    --filter='displayName:"product-service"' \
+    --filter=displayName:product-service \
     --format='value(email)')
 
 gcloud projects add-iam-policy-binding $PROJECT_NAME \
