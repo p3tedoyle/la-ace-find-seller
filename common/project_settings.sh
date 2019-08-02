@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The name of the project to deploy services into.
-PROJECT_NAME="p3tedoyle/la-ace-find-seller"
+PROJECT_NAME="pdoyle-find-seller-app-dev"
 
 # Which default region should regional services use?
 PROJECT_REGION="us-central1"
