@@ -23,32 +23,31 @@ mkdir -p ../app/secrets
 SERVICE_ACCOUNT_NAME=product-service
 SERVICE_ACCOUNT_DEST=../app/secrets/service_account.json
 
-
 gcloud iam service-accounts create \
     $SERVICE_ACCOUNT_NAME \
     --display-name $SERVICE_ACCOUNT_NAME
 
 SA_EMAIL=$(gcloud iam service-accounts list \
-    --filter="displayName:$SERVICE_ACCOUNT_NAME" \
+    --filter='displayName:"product-service"' \
     --format='value(email)')
 
 gcloud projects add-iam-policy-binding $PROJECT_NAME \
     --role roles/bigtable.user \
-    --member serviceAccount:product-service@pdoyle-find-seller-app-dev.iam.gserviceaccount.com
+    --member serviceAccount:$SA_EMAIL
 
 gcloud projects add-iam-policy-binding $PROJECT_NAME \
     --role roles/storage.objectAdmin \
-    --member serviceAccount:product-service@pdoyle-find-seller-app-dev.iam.gserviceaccount.com
+    --member serviceAccount:$SA_EMAIL
 
 gcloud projects add-iam-policy-binding $PROJECT_NAME \
     --role roles/bigquery.dataViewer \
-    --member serviceAccount:product-service@pdoyle-find-seller-app-dev.iam.gserviceaccount.com
+    --member serviceAccount:$SA_EMAIL
 
 gcloud projects add-iam-policy-binding $PROJECT_NAME \
     --role roles/bigquery.jobUser \
-    --member serviceAccount:product-service@pdoyle-find-seller-app-dev.iam.gserviceaccount.com
+    --member serviceAccount:$SA_EMAIL
 
-gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST --iam-account product-service@pdoyle-find-seller-app-dev.iam.gserviceaccount.com
+gcloud iam service-accounts keys create $SERVICE_ACCOUNT_DEST --iam-account $SA_EMAIL
 
 echo "##############################################################################"
 echo "Service account created and key stored in the products/app/secrets dir with the name $SERVICE_ACCOUNT_NAME"
